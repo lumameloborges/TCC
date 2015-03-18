@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>Preço do Combustivel - Cadastro de Usuarios</title>
+        <link rel="stylesheet" href="css/stilo.css" type="text/css"></link>
+    </head>
+    <body>
+            <div class="logo" id="logo" >
+            <img src="Imagens/posto3.jpg"/><img src="Imagens/posto3.jpg"/><img src="Imagens/posto3.jpg"/><img src="Imagens/posto3.jpg"/>
+            </div>
+        <div class="divcadastro">
+            <h:form id="formusuario">
+                <div class="divcadastrotitulo">
+                    <td><b><p align="center">Cadastro Usuario</p></b></td>
+                </div>
+                <table>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nome:&nbsp;&nbsp;&nbsp;</td><td><h:inputText id="txtnome" value="#{UsuarioMNG.nome}" styleClass="inputs" size="40" maxlength="20"/></td> 
+                        <tr>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Endereço:&nbsp;&nbsp;&nbsp;</td><td><h:inputText styleClass="inputs" id="txtendereco" value="#{UsuarioMNG.endereco}" size="30" maxlength="40"/></td>
+                        <tr>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bairro:</td><td><h:inputText styleClass="inputs" id="txtbairro" value="#{UsuarioMNG.bairro}" size="11" maxlength="20"/></td><td>&nbsp;Cidade:<h:inputText styleClass="inputs" id="txtcidade" value="#{UsuarioMNG.cidade}" size="15" maxlength="20"/></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UF:</td><td><h:inputText styleClass="inputs" id="txtuf" value="#{UsuarioMNG.uf}" size="11" maxlength="2"/></td>
+                            <td> </td><td> </td><td> </td>
+                        </tr>
+                        <tr>
+                            <td> </td><td> </td><td> </td>
+                        </tr>
+                        <tr>
+                            <td> </td><td> </td><td> </td>
+                        </tr>
+                        <tr>
+                            <td> </td><td> </td><td> </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Usuario:</td><td><h:inputText styleClass="inputs" id="txtuser" value="#{UsuarioMNG.username}" size="20" maxlength="10"/></td><td> </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Senha:</td><td><h:inputSecret styleClass="inputs" id="txtsenha" value="#{UsuarioMNG.senha}" size="20" maxlength="10"/></td><td> </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E-mail:</td><td><h:inputText styleClass="inputs" id="txtemail" value="#{UsuarioMNG.email}" size="30" maxlength="20"/></td><td> </td><td> </td>
+                        </tr>
+                        <tr>
+                            <td> </td><td> </td><td> </td>
+                        </tr>
+                        <tr>
+                            <td> </td><td> </td><td> </td>
+                        </tr>
+                        <tr>
+                            <td> </td><td> </td><td> </td>
+                        </tr>
+                        <tr>
+                            <td> </td><td> </td><td> </td>
+                        </tr>
+                        <tr>
+                            <td> </td>
+                            <td>
+                                <h:commandButton styleClass="buttons" value="Cadastrar" action="#{UsuarioMNG.save()}"/>
+                                <h:commandButton styleClass="buttons" value="Limpar" action="#{UsuarioMNG.clear(event)}"/>
+                                <h:commandButton styleClass="buttons" value="Voltar" action="#{indexMNG.redirectIndex()}"/>
+                            </td>
+                            <td> </td>
+                        </tr>
+                    </tr>
+                </table>
+                <br/>
+                <br/>
+            </h:form>
+        </div>
+    </body>
+</html>
+

@@ -1,0 +1,79 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+        <title>Valor dos Combustiveis</title>
+        <link rel="stylesheet" href="css/stilo.css" type="text/css"></link>
+        <script type="text/javascript" src="js/javascript.js" charset="UTF-8"></script>
+    </head>
+    <body>
+        <body>
+            <f:view>
+                <h:form id="formlogin">
+                    <p>
+                        <br/><br/><br/><br/><br/><br/><br/><br/>
+                        <h:commandLink action="login" value="Login" styleClass="menuItem"/><br/>
+                        <br/>
+                        <a href="https://www.facebook.com/"><img src="Imagens/facebook.jpg" /></a>
+                    </p>
+                </h:form>
+            </f:view>
+            <td class="td-busca">
+                <form id="form-busca">
+                    <p align="center"><input id="search-box" size="60" type="text" name="q" 
+                                             class="search-box-com-dica"
+                                             onfocus="escondeDicaSearchBox()" onblur="mostraDicaSearchBox('Digite sua localidade)')"
+                                             value="Digite sua localidade"/>
+                        <input id="button-submit" type="submit" value="buscar"/></p>
+                </form>
+            </td>
+            <h:form id="formtipo"> </h:form>
+            <h:form id="formvec"> </h:form>
+            <div class="divpostotitulo">
+            <td><b>Valor dos Combustíveis</b></td>
+            <br/><br/>
+            </div>
+            <p align="center">
+                <div class="tabela">
+                    <h:dataTable value="#{postoMNG.lista}"  var="vec" styleClass="tablev" border="1" cellspacing="2" cellpadding="2" width="90%" >
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Posto"/>
+                            </f:facet>           
+                            <h:outputText value="#{vec.nome}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Combustivel"/>
+                            </f:facet>
+                            <h:outputText value="#{vec.combustivel.tipoCombustivel}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Endereço"/>
+                            </f:facet>
+                            <h:outputText value="#{vec.endereco.rua}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Valor"/>
+                            </f:facet>
+                            <h:outputText value="#{vec.valor.valorCombustivel}"/>
+                        </h:column>
+                    </h:dataTable>
+                </div>
+            </p>
+            <div class="logo" id="logo" >
+                <img src="Imagens/posto3.jpg"/><img src="Imagens/posto3.jpg"/><img src="Imagens/posto3.jpg"/><img src="Imagens/posto3.jpg"/>
+            </div>
+            <br/><br/>
+            <div class="mapa" id="mapa" >
+                <img src="Imagens/mapa.jpg"/>
+            </div>
+            <div class="anp" id="anp" >
+                <img src="Imagens/anp.png"/>
+            </div>
+        </body>
+    </body>
+</html>

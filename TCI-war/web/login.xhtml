@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+        <title>Preço dos Combustiveis</title>
+        <link rel="stylesheet" href="css/stilo.css" type="text/css"></link>
+        <script type="text/javascript" src="js/javascript.js" charset="UTF-8"></script>
+    </head>
+    <body>
+        
+                    <div class="logo" id="logo" >
+                        <img src="Imagens/posto3.jpg"/><img src="Imagens/posto3.jpg"/><img src="Imagens/posto3.jpg"/><img src="Imagens/posto3.jpg"/>
+            </div>
+
+            <div class="login">
+                <f:view>
+                    <h:form id="formlogin">
+                           <div class="divlogintitulo">
+                        <td><b><p align="center">Login Usuario</p></b></td>
+                           </div>
+                        <p>
+                            <p><td><p align="center">Login:</p></td></p>
+                            <p align="center"><h:inputText id="txtlogin" value="#{UsuarioMNG.username}"/><br/></p>
+                            <p><td><p align="center">Senha:</p></td></p>
+                            <p align="center"><h:inputSecret id="txtSenha" value="#{UsuarioMNG.senha}"/></p>
+                            <br/>
+                            <p align="center"><h:commandButton id="submit" styleClass="buttons" type="submit" value="Login" action="#{UsuarioMNG.valida()}"/></p>
+                            <input type="hidden" id="acao" name="acao" value="login"/>
+                            <td><br/>Não possuí Cadastro? Clique </td>
+                            <h:commandLink action="formusuario" value="Aqui" styleClass="menuItem"/><br/>
+                        </p>
+                    </h:form>
+                </f:view>
+            </div>
+    </body>
+</html>

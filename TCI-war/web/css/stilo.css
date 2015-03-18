@@ -1,0 +1,112 @@
+root { 
+    display: block;
+}
+body {
+    margin:0px;
+    padding:0px;
+    background-color: #ffffff;
+}
+.menu{  
+    background-color: #ffffff;
+    position: absolute;
+    font-size: x-large;
+    color: #666666;
+    width: 960px;
+    height: 33px;
+    right: 170px;
+    bottom: 509px;
+}
+.principal {
+    background-color: #ffffff;
+    position: absolute;
+    width: 1000px;
+    height: 700px;
+    visibility: visible;
+    top: 160px;
+    right: 100px;
+    bottom: 200px;
+    left: 200px;
+}
+.logo {
+    position: absolute;
+    background-color: #ffffff; 
+    width: 1216px;
+    height: 160px;
+    top: -2px;
+    right: 200px;
+    bottom: 300px;
+    left: 90px;
+}
+.mapa{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 360px;
+    right: 1000px;
+    bottom: 300px;
+    left: 750px;   
+}
+.login {
+    position: absolute;
+    background-color: #ffffff;
+    color: #000000;
+    width: 400px;
+    height: 300px;
+    top: 180px;
+    left: 500px; 
+}
+.divcadastro {
+    position: absolute;
+    background-color: #ffffff;
+    width: 650px;
+    height: 500px;
+    top: 190px;
+    right: 330px;
+
+}
+.divcadastrotitulo {
+    position: absolute;
+    background-color: #ffffff;
+    font-size: x-large;
+    color: #0099cc;
+    width: 220px;
+    height: 50px;
+    right: 220px; 
+    bottom: 430px;
+}
+
+.divpostotitulo{
+    position: absolute;
+    font-size: x-large;
+    width: 1000px;
+    right: 300px; 
+    color: #0099cc;
+}
+
+.cadastrado{
+    font-size: x-large;
+    color: #0099cc;
+}
+.voltarpi{
+   position: absolute;
+    width: 700px;
+    right: 650px; 
+    top: 370px;
+    font-size: large;
+}
+
+.divlogintitulo{
+    font-size: x-large;
+    color: #0099cc; 
+}
+.tabela{
+    position: absolute;
+    width: 600px;
+    right: 650px; 
+    top: 370px;
+}
+.anp{
+    position: absolute;
+    top:850px;
+    left: 50px;
+}

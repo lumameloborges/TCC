@@ -9,10 +9,10 @@ package jsf.tci.mng;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
-import javax.inject.Named;
 import jpa.tci.bean.Usuario;
 import jpa.ejb.tci.dao.UsuarioDAORemote;
 /**
@@ -20,7 +20,7 @@ import jpa.ejb.tci.dao.UsuarioDAORemote;
  * @author Luma Borges
  */
 
-@Named(value = "UsuarioMNG")
+@ManagedBean(name = "UsuarioMNG")
 @RequestScoped
 
 public class UsuarioMNG {

@@ -6,6 +6,7 @@
 package jpa.ejb.tci.dao;
 
 import java.util.List;
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -18,7 +19,7 @@ import jpa.tci.bean.Usuario;
  * @author Luma Borges
  */
 @Stateless
-
+@LocalBean
 public class UsuarioDAO implements UsuarioDAORemote {
 
     @PersistenceContext
@@ -66,6 +67,8 @@ public class UsuarioDAO implements UsuarioDAORemote {
         }
         return ret;
     }
+    
+    
 
     @Override
     public Usuario achaLogin(String username) {
@@ -75,6 +78,16 @@ public class UsuarioDAO implements UsuarioDAORemote {
             return value;
         } catch (NoResultException nre) {
             return null;
+        }
+    }
+
+    @Override
+    public boolean valida(String username, String passwords) {
+        Usuario usuario = this.achaLogin(username);
+        if (usuario!=null){
+            return usuario.validasenha(passwords);
+        }else{
+            return false;
         }
     }
 }

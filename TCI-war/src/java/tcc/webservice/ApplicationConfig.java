@@ -7,12 +7,13 @@ package tcc.webservice;
 
 import java.util.Set;
 import javax.ws.rs.core.Application;
+import jpa.tci.ws.TesteServico;
 
 /**
  *
  * @author aluno
  */
-@javax.ws.rs.ApplicationPath("testeservico")
+@javax.ws.rs.ApplicationPath("meuservico")
 public class ApplicationConfig extends Application {
 
     @Override

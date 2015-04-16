@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package jpa.ejb.tci.dao;
 
 import java.util.List;
@@ -14,8 +13,6 @@ import jpa.tci.bean.Usuario;
  *
  * @author Luma Borges
  */
-
-
 @Remote
 public interface UsuarioDAORemote {
 
@@ -31,5 +28,8 @@ public interface UsuarioDAORemote {
 
     boolean valida(Usuario value);
 
+    boolean valida(String username, String passwords);
+
     Usuario achaLogin(String username);
+
 }

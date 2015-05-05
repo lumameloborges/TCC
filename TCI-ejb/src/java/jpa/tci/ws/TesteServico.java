@@ -18,7 +18,6 @@ import jpa.ejb.tci.dao.UsuarioDAORemote;
  *
  * @author aluno
  */
-
 @Stateless
 @Path(value = "/testeservico")
 public class TesteServico {
@@ -27,20 +26,32 @@ public class TesteServico {
     private UsuarioDAORemote usuarioDAO;
 
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String testeGetText() {
-        return "teste do get TEXTO";
+    @Produces(MediaType.APPLICATION_JSON)
+    public User testeGetText() {
+        User user=new User();
+        user.setLogado(true);
+        return user;
     }
 
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("/{usuario}/{senha}")
-    public Boolean testeGetXML(@PathParam("usuario") String usuario, @PathParam("senha") String senha) {
+    public User testeGetXML(@PathParam("usuario") String usuario, @PathParam("senha") String senha) {
 //        UsuarioWs usuariows = new UsuarioWs();
 //        usuariows.setUsername("teste usuario" + usuario);
 //        usuariows.setSenha("teste senha" + senha);
+        User user = new User();
+        user.setLogado(usuarioDAO.valida(usuario, senha));
+        return user;
 
-        return usuarioDAO.valida(usuario, senha);
+    }
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/teste/{usuario}")
+    public User testeGetXML(@PathParam("usuario") String usuario) {
+        User user = new User();
+        user.setLogado(usuarioDAO.valida(usuario, "101010"));
+        return user;
     }
 }

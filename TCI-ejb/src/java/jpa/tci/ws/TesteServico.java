@@ -24,11 +24,11 @@ public class TesteServico {
 
     @EJB
     private UsuarioDAORemote usuarioDAO;
-
+    
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public User testeGetText() {
-        User user=new User();
+        User user = new User();
         user.setLogado(true);
         return user;
     }
@@ -54,4 +54,6 @@ public class TesteServico {
         user.setLogado(usuarioDAO.valida(usuario, "101010"));
         return user;
     }
+    
+    
 }

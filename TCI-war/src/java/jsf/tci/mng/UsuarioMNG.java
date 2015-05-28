@@ -127,6 +127,15 @@ public class UsuarioMNG {
 
     public void clear(AjaxBehaviorEvent event) {
         this.cod = null;
+        this.cidade = null;
+        this.bairro = null;
+        this.endereco = null;
+        this.complemento = null;
+        this.senha = null;
+        this.uf = null;
+        this.username = null;
+        this.nome = null;
+        this.email = null;
     }
 
     public String save() {

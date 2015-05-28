@@ -22,7 +22,7 @@ public class IndexMNG {
     }
 
     public String redirectIndex() {
-        return "index";
+        return  "index";
     }
 
     public String redirectLogin() {

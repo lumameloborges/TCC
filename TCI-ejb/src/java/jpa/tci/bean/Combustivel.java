@@ -31,7 +31,7 @@ public class Combustivel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "seqCombustivel")
-    private int cod;
+    public int cod;
     private String descricao, tipocombustivel;
     @ManyToOne
     @JoinColumn(name = "cod_valor", referencedColumnName = "cod")

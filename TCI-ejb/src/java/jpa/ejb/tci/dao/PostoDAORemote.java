@@ -6,6 +6,7 @@
 
 package jpa.ejb.tci.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 import javax.ejb.Remote;
 import jpa.tci.bean.Posto;
@@ -29,4 +30,6 @@ public interface PostoDAORemote {
     List<Posto> listaTodos();
 
     boolean valida(Posto value);
+    
+    Posto buscar(Posto posto) throws SQLException ;
 }

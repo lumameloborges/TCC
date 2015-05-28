@@ -7,20 +7,17 @@ package tcc.webservice;
 
 import java.util.Set;
 import javax.ws.rs.core.Application;
-import jpa.tci.ws.TesteServico;
 import jpa.tci.ws.TesteServicoPosto;
+
 
 /**
  *
- * @author aluno
+ * @author User
  */
-@javax.ws.rs.ApplicationPath("meuservico")
-public class ApplicationConfig extends Application {
-
-    @Override
+public class Config extends Application{
+     @Override
     public Set<Class<?>> getClasses() {
         Set<Class<?>> resources = new java.util.HashSet<>();
-        resources.add(TesteServico.class);
         resources.add(TesteServicoPosto.class);
         return resources;
     }

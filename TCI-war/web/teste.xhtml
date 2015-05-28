@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">   
+    <head>
+        <title>TESTE</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <body>
+            <h:form id="formtipo"> </h:form>
+            <h:form id="formvec"> </h:form>
+            <p align="center">
+                <div class="tabela">
+                    <h:dataTable
+                        value="#{postoMNG.lista}"  var="vec" styleClass="tablev" border="1" cellspacing="2" cellpadding="2" width="90%" >
+                    </h:dataTable>
+                </div>
+            </p>
+        </body>
+    </body>
+</html>

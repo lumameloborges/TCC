@@ -6,6 +6,7 @@
 
 package jpa.ejb.tci.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 import javax.ejb.Remote;
 import jpa.tci.bean.Valor;
@@ -29,4 +30,6 @@ public interface ValorDAORemote {
     List<Valor> listaTodos();
 
     boolean valida(Valor vlaue);
+    
+    Valor buscar(Valor valor) throws SQLException ;
 }

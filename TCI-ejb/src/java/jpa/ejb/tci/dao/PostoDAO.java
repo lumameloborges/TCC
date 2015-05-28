@@ -6,10 +6,16 @@
 
 package jpa.ejb.tci.dao;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import jpa.tci.bean.Conexao;
 import jpa.tci.bean.Posto;
 
 /**
@@ -66,5 +72,34 @@ public class PostoDAO implements PostoDAORemote {
             ret = true;
         }
         return ret;
+    }
+    
+    public Posto buscar(Posto posto) throws SQLException {
+        String sql = "SELECT * FROM posto where nome=?";
+        Posto retorno = null;
+
+        PreparedStatement pst = Conexao.getPreparedStatement(sql);
+        try {
+
+            pst.setString(1, posto.getNome());
+            ResultSet res = pst.executeQuery();
+
+            if (res.next()) {
+                retorno = new Posto();
+                retorno.setNome(res.getString("nome"));
+//                retorno.setSenha(res.getString("senha"));
+//                retorno.setEmail(res.getString("email"));
+//                retorno.setPerfil(res.getString("perfil"));
+
+            }
+            
+            
+        }catch (SQLException ex) {
+            Logger.getLogger(PostoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        
+        return retorno;
+ 
     }
 }

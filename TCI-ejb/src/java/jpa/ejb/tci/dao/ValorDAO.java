@@ -6,10 +6,16 @@
 
 package jpa.ejb.tci.dao;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import jpa.tci.bean.Conexao;
 import jpa.tci.bean.Valor;
 
 /**
@@ -64,5 +70,35 @@ public class ValorDAO implements ValorDAORemote {
             ret = true;
         }
         return ret;
+    }
+
+     public Valor buscar(Valor valor) throws SQLException {
+        String sql = "SELECT * FROM valor where valorcombustivel=?";
+        Valor retorno = null;
+
+        PreparedStatement pst = Conexao.getPreparedStatement(sql);
+        try {
+
+            pst.setDouble(1, valor.getValorCombustivel());
+            ResultSet res = pst.executeQuery();
+
+            if (res.next()) {
+                retorno = new Valor();
+                retorno.setValorCombustivel(res.getDouble("valorcombustivel"));
+//                retorno.setSenha(res.getString("senha"));
+//                retorno.setEmail(res.getString("email"));
+//                retorno.setPerfil(res.getString("perfil"));
+
+            }
+            
+            
+        }
+        catch (SQLException ex) {
+           Logger.getLogger(ValorDAO.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        
+        return retorno;
+ 
     }
 }

@@ -6,10 +6,16 @@
 
 package jpa.ejb.tci.dao;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import jpa.tci.bean.Conexao;
 import jpa.tci.bean.Endereco;
 
 /**
@@ -66,4 +72,32 @@ public class EnderecoDAO implements EnderecoDAORemote {
         }
         return ret;
     }
+    
+    @Override
+    public Endereco buscar(Endereco endereco) throws SQLException {
+
+        String sql = "SELECT * FROM endeerco where rua=?";
+        Endereco retorno = null;
+
+        PreparedStatement pst = Conexao.getPreparedStatement(sql);
+        try {
+
+            pst.setString(1, endereco.getRua());
+            ResultSet res = pst.executeQuery();
+
+            if (res.next()) {
+                retorno = new Endereco();
+                retorno.setCod(Integer.parseInt(res.getString("cod")));
+                retorno.setRua(res.getString("rua"));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(PostoDAO.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
+        return retorno;
+
+    }
+
 }

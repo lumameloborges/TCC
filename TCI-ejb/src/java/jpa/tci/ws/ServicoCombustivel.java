@@ -33,7 +33,6 @@ public class ServicoCombustivel {
     public CombWS getCombustivel(@PathParam("tipocombustivel") String tipocombustivel ) throws SQLException
     {
      Combustivel c = new Combustivel();
-     //c.setTipoCombustivel(tipocombustivel);
      c.setTipoCombustivel(tipocombustivel);
 
         c = combustivelDAO.buscar(c);
@@ -56,25 +55,9 @@ public class ServicoCombustivel {
             CombWS comb=new CombWS();
             comb.setId(combustivel.getCod());
             comb.setTipocombustivel(combustivel.getTipoCombustivel());
-            //comb.setTipocombustivel(comb.getTipocombustivel());
             lista.add(comb);
         }
         return lista;
     }
 }
 
-//     @GET
-//    @Produces("application/json")
-//    @Path("Posto/listatodos")   
-//    public List<PostWS> getListaTodos(){
-//
-//        List<Posto> listaTodos = postoDAO.listaTodos();
-//        List<PostWS> lista=new ArrayList<>();
-//        for (Posto posto:listaTodos){
-//            PostWS post=new PostWS();
-//            post.setId(posto.getCod());
-//            post.setNome(posto.getNome());
-//            lista.add(post);
-//        }
-//        return lista;
-//    }

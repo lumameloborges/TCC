@@ -9,6 +9,7 @@ import java.util.Set;
 import javax.ws.rs.core.Application;
 import jpa.tci.ws.Servico;
 import jpa.tci.ws.ServicoCombustivel;
+import jpa.tci.ws.ServicoEndereco;
 import jpa.tci.ws.ServicoPosto;
 import jpa.tci.ws.ServicoValor;
 
@@ -26,6 +27,7 @@ public class ApplicationConfig extends Application {
         resources.add(ServicoPosto.class);
         resources.add(ServicoValor.class);
         resources.add(ServicoCombustivel.class);
+        resources.add(ServicoEndereco.class);
         return resources;
     }
     

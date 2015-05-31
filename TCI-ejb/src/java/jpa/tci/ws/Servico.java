@@ -19,7 +19,7 @@ import jpa.ejb.tci.dao.UsuarioDAORemote;
  * @author aluno
  */
 @Stateless
-@Path(value = "/testeservico")
+@Path(value = "/servico")
 public class Servico {
 
     @EJB

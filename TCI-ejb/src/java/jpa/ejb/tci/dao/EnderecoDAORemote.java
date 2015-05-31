@@ -6,6 +6,7 @@
 
 package jpa.ejb.tci.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 import javax.ejb.Remote;
 import jpa.tci.bean.Endereco;
@@ -30,4 +31,6 @@ public interface EnderecoDAORemote {
     List<Endereco> listaTodos();
 
     boolean valida(Endereco value);
+    
+    Endereco buscar(Endereco endereco) throws SQLException;
 }

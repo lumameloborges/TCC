@@ -26,24 +26,7 @@ import jpa.tci.bean.Posto;
 public class ServicoPosto {
     @EJB
     private PostoDAORemote postoDAO;
-    
-//    @GET
-//    @Produces(MediaType.TEXT_PLAIN)
-//    public String testeGetText() {
-//        return "teste do get TEXTO";
-//    }
-    
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public PostWS testeGetText(String nome) {
-//        PostWS post = new PostWS();
-////    @Produces(MediaType.APPLICATION_JSON)
-////    @Path("/{nome}")
-////    public User testeGetXML(@PathParam("nome") String nome) {
-//        post.setNome(nome);
-//        return post;
-//    }
-    
+     
     @GET
     @Produces("application/json")
     @Path("Posto/get/{nome}")
@@ -77,12 +60,4 @@ public class ServicoPosto {
         }
         return lista;
     }
-    
-//    @GET
-//        PostWS post = new PostWS();
-//        post.setNome(postoDAO.valida(nome));
-//        return post;
-//
-//    }
-
 }

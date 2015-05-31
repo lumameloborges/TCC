@@ -8,8 +8,8 @@ package jpa.ejb.tci.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
+//import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -70,5 +70,36 @@ public class CombustivelDAO implements CombustivelDAORemote {
             ret = true;
         }
         return ret;
+    }
+
+    @Override
+    public Combustivel buscar(Combustivel combustivel) throws SQLException {
+
+        String sql = "SELECT * FROM combustivel where tipocombustivel=?";
+        Combustivel retorno = null;
+
+        PreparedStatement pst = Conexao.getPreparedStatement(sql);
+        try {
+
+            pst.setString(1, combustivel.getTipoCombustivel());
+            ResultSet res = pst.executeQuery();
+
+            if (res.next()) {
+                retorno = new Combustivel();
+                retorno.setCod(Integer.parseInt(res.getString("cod")));
+                retorno.setTipoCombustivel(res.getString("tipocombustivel"));
+//                retorno.setSenha(res.getString("senha"));
+//                retorno.setEmail(res.getString("email"));
+//                retorno.setPerfil(res.getString("perfil"));
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(PostoDAO.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
+        return retorno;
+
     }
 }

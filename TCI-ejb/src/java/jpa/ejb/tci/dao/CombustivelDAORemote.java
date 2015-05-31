@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package jpa.ejb.tci.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 import javax.ejb.Remote;
 import jpa.tci.bean.Combustivel;
@@ -14,8 +14,6 @@ import jpa.tci.bean.Combustivel;
  *
  * @author Luma Borges
  */
-
-
 @Remote
 
 public interface CombustivelDAORemote {
@@ -31,4 +29,6 @@ public interface CombustivelDAORemote {
     List<Combustivel> listaTodos();
 
     boolean valida(Combustivel value);
+
+    Combustivel buscar(Combustivel combustivel) throws SQLException;
 }

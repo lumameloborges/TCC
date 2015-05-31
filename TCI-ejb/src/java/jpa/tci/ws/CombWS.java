@@ -9,9 +9,9 @@ package jpa.tci.ws;
  *
  * @author User
  */
-public class Post {
+public class CombWS {
     private int id;
-    private String nome;
+    private String tipocombustivel;
 
     public int getId() {
         return id;
@@ -21,11 +21,12 @@ public class Post {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getTipocombustivel() {
+        return tipocombustivel;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setTipocombustivel(String tipocombustivel) {
+        this.tipocombustivel = tipocombustivel;
     }
+    
 }

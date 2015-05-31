@@ -24,7 +24,7 @@ import jpa.tci.bean.Valor;
  * @author User
  */
 @Stateless
-@Path(value = "/testeservicovalor")
+@Path(value = "/servicovalor")
 public class ServicoValor {
     @EJB
     private ValorDAORemote valorDAO;
@@ -33,7 +33,7 @@ public class ServicoValor {
 @GET
     @Produces("application/json")
     @Path("Valor/get/{valorcombustivel}")
-    public Val getValor(@PathParam("valorcombustivel") double valorcombustivel ) throws SQLException
+    public ValWS getValor(@PathParam("valorcombustivel") double valorcombustivel ) throws SQLException
     {
         Valor v = new Valor();
         v.setValorCombustivel(valorcombustivel);
@@ -41,7 +41,7 @@ public class ServicoValor {
         v = valorDAO.buscar(v);
         
         
-        Val val=new Val();
+        ValWS val=new ValWS();
         val.setId(v.getCod());
         val.setValorcombustivel(v.getValorCombustivel());
 
@@ -51,12 +51,12 @@ public class ServicoValor {
      @GET
     @Produces("application/json")
     @Path("Valor/listatodos")   
-    public List<Val> getListaTodos(){
+    public List<ValWS> getListaTodos(){
 
         List<Valor> listaTodos = valorDAO.listaTodos();
-        List<Val> lista=new ArrayList<>();
+        List<ValWS> lista=new ArrayList<>();
         for (Valor valor:listaTodos){
-            Val val=new Val();
+            ValWS val=new ValWS();
             val.setId(valor.getCod());
             val.setValorcombustivel(valor.getValorCombustivel());
             lista.add(val);

@@ -8,16 +8,17 @@ package jsf.tci.mng;
 
 import java.util.List;
 import javax.ejb.EJB;
-import javax.faces.bean.RequestScoped;
+//import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
-import javax.inject.Named;
 import javax.validation.constraints.Pattern;
 import jpa.tci.bean.Combustivel;
 import jpa.tci.bean.Endereco;
 import jpa.tci.bean.Valor;
 import jpa.tci.bean.Posto;
 import jpa.ejb.tci.dao.PostoDAORemote;
+import javax.inject.Named;
+import javax.enterprise.context.RequestScoped;
 
 
 /**

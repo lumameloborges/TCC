@@ -7,9 +7,9 @@ package jpa.tci.ws;
 
 /**
  *
- * @author User
+ * @author UserWS
  */
-public class User {
+public class UserWS {
     private boolean logado;
 
     public boolean isLogado() {

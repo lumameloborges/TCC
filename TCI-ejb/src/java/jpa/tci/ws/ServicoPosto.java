@@ -22,8 +22,8 @@ import jpa.tci.bean.Posto;
  * @author User
  */
 @Stateless
-@Path(value = "/testeservicoposto")
-public class TesteServicoPosto {
+@Path(value = "/servicoposto")
+public class ServicoPosto {
     @EJB
     private PostoDAORemote postoDAO;
     
@@ -35,8 +35,8 @@ public class TesteServicoPosto {
     
 //    @GET
 //    @Produces(MediaType.APPLICATION_JSON)
-//    public Post testeGetText(String nome) {
-//        Post post = new Post();
+//    public PostWS testeGetText(String nome) {
+//        PostWS post = new PostWS();
 ////    @Produces(MediaType.APPLICATION_JSON)
 ////    @Path("/{nome}")
 ////    public User testeGetXML(@PathParam("nome") String nome) {
@@ -47,7 +47,7 @@ public class TesteServicoPosto {
     @GET
     @Produces("application/json")
     @Path("Posto/get/{nome}")
-    public Post getPosto(@PathParam("nome") String nome ) throws SQLException
+    public PostWS getPosto(@PathParam("nome") String nome ) throws SQLException
     {
         Posto p = new Posto();
         p.setNome(nome);
@@ -55,7 +55,7 @@ public class TesteServicoPosto {
         p = postoDAO.buscar(p);
         
         
-        Post post=new Post();
+        PostWS post=new PostWS();
         post.setId(p.getCod());
         post.setNome(p.getNome());
 
@@ -65,12 +65,12 @@ public class TesteServicoPosto {
      @GET
     @Produces("application/json")
     @Path("Posto/listatodos")   
-    public List<Post> getListaTodos(){
+    public List<PostWS> getListaTodos(){
 
         List<Posto> listaTodos = postoDAO.listaTodos();
-        List<Post> lista=new ArrayList<>();
+        List<PostWS> lista=new ArrayList<>();
         for (Posto posto:listaTodos){
-            Post post=new Post();
+            PostWS post=new PostWS();
             post.setId(posto.getCod());
             post.setNome(posto.getNome());
             lista.add(post);
@@ -79,7 +79,7 @@ public class TesteServicoPosto {
     }
     
 //    @GET
-//        Post post = new Post();
+//        PostWS post = new PostWS();
 //        post.setNome(postoDAO.valida(nome));
 //        return post;
 //

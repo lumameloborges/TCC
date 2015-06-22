@@ -36,7 +36,7 @@
             </div>
             <p align="center">
                 <div class="tabela">
-                    <h:dataTable value="#{postoMNG.lista}"  var="vec" styleClass="tablev" border="1" cellspacing="2" cellpadding="2" width="90%" >
+                    <h:dataTable value="#{postoMNG.lista}" var="vec" styleClass="tablev" border="1" cellspacing="2" cellpadding="2" width="90%" >
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="Posto"/>
@@ -47,21 +47,21 @@
                             <f:facet name="header">
                                 <h:outputText value="Combustivel"/>
                             </f:facet>
-                            <h:outputText value="#{vec.combustivel.tipoCombustivel}"/>
+                            <h:outputText value="#{vec.tipoCombustivel}"/>
                         </h:column>
-                        <h:column>
+                     <h:column>
                             <f:facet name="header">
                                 <h:outputText value="Endereço"/>
                             </f:facet>
-                            <h:outputText value="#{vec.endereco.rua}"/>
+                            <h:outputText value="#{vec.rua}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="Valor"/>
                             </f:facet>
-                            <h:outputText value="#{vec.valor.valorCombustivel}"/>
+                            <h:outputText value="#{vec.valor}"/>
                         </h:column>
-                    </h:dataTable>
+                        </h:dataTable>
                 </div>
             </p>
             <div class="logo" id="logo" >

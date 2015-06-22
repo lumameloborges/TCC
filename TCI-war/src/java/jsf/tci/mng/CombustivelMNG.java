@@ -60,14 +60,14 @@ public class CombustivelMNG {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-
-    public Valor getValor() {
-        return valor;
-    }
-
-    public void setValor(Valor valor) {
-        this.valor = valor;
-    }
+//
+//    public Valor getValor() {
+//        return valor;
+//    }
+//
+//    public void setValor(Valor valor) {
+//        this.valor = valor;
+//    }
 
     public List<Combustivel> getLista() {
         return dao.listaTodos();
@@ -78,8 +78,7 @@ public class CombustivelMNG {
     }
 
     public String save() {
-        Combustivel value = new Combustivel();
-        value.setValor(this.valor);
+        Combustivel value = new Combustivel();;
         value.setDescricao(this.descricao);
         value.setTipoCombustivel(this.tipocombustivel);
         dao.create(value);
@@ -100,7 +99,7 @@ public class CombustivelMNG {
         value.setCod(index);
         value = dao.retrive(value);
         this.cod = Integer.toString(value.getCod());
-        this.valor = value.getValor();
+        //this.valor = value.getValor();
         this.descricao = getDescricao();
         this.tipocombustivel = getTipoCombustivel();
         return "modeloUpdate";
@@ -109,7 +108,7 @@ public class CombustivelMNG {
     public String update() {
         Combustivel value = new Combustivel();
         value.setCod(Integer.valueOf(cod));
-        value.setValor(valor);
+        //value.setValor(valor);
         value.setDescricao(descricao);
         value.setTipoCombustivel(tipocombustivel);
         dao.update(value);

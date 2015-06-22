@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package jsf.tci.mng;
 
 import java.util.List;
@@ -20,12 +19,10 @@ import jpa.ejb.tci.dao.PostoDAORemote;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 
-
 /**
  *
  * @author Luma Borges
  */
-
 @Named(value = "postoMNG")
 @RequestScoped
 public class PostoMNG {
@@ -35,8 +32,7 @@ public class PostoMNG {
     private String cod;
     @Pattern(regexp = "(.+)", message = "{invalid.posto.endereco}")
     private String nome;
-    private Combustivel combustivel;
-    private Endereco endereco;
+//    private Combustivel combustivel;
     private Valor valor;
 
     /**
@@ -52,7 +48,7 @@ public class PostoMNG {
     public void setCod(String cod) {
         this.cod = cod;
     }
-    
+
     public String getNome() {
         return nome;
     }
@@ -61,22 +57,14 @@ public class PostoMNG {
         this.nome = nome;
     }
 
-    public Combustivel getCombustivel() {
-        return combustivel;
-    }
+//    public Combustivel getCombustivel() {
+//        return combustivel;
+//    }
+//
+//    public void setCombustivel(Combustivel combustivel) {
+//        this.combustivel = combustivel;
+//    }
 
-    public void setCombustivel(Combustivel combustivel) {
-        this.combustivel = combustivel;
-    }
-    
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-    
     public Valor getValor() {
         return valor;
     }
@@ -86,7 +74,7 @@ public class PostoMNG {
     }
 
     public List<Posto> getLista() {
-        return dao.listaTodos();
+        return dao.listateste();
     }
 
     public void clear(AjaxBehaviorEvent event) {
@@ -95,10 +83,8 @@ public class PostoMNG {
 
     public String save() {
         Posto value = new Posto();
-        value.setEndereco(this.endereco);
-        value.setValor(this.valor);
-        value.setCombustivel(this.combustivel);
-        value.setNome (this.nome);
+//        value.setValorCombustivel((List<Valor>) this.valor);
+        value.setNome(this.nome);
         dao.create(value);
         return "Ok";
     }
@@ -118,16 +104,14 @@ public class PostoMNG {
         value = dao.retrive(value);
         this.cod = Integer.toString(value.getCod());
         this.nome = getNome();
-        this.endereco = value.getEndereco();
-        this.valor = value.getValor();
+//        this.valor = (Valor) value.getValorCombustivel();
         return "postoUpdate";
     }
 
     public String update() {
         Posto value = new Posto();
         value.setCod(Integer.valueOf(cod));
-        value.setValor(valor);
-        value.setEndereco(endereco);
+//        value.setValorCombustivel((List<Valor>) valor);
         value.setNome(nome);
         dao.update(value);
         return "ok";

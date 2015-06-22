@@ -85,10 +85,6 @@ public class ValorDAO implements ValorDAORemote {
             if (res.next()) {
                 retorno = new Valor();
                 retorno.setValorCombustivel(res.getDouble("valorcombustivel"));
-//                retorno.setSenha(res.getString("senha"));
-//                retorno.setEmail(res.getString("email"));
-//                retorno.setPerfil(res.getString("perfil"));
-
             }
             
             

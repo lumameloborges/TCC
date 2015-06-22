@@ -28,6 +28,8 @@ public interface PostoDAORemote {
     void delete(Posto value);
 
     List<Posto> listaTodos();
+    
+    List<Posto> listateste();
 
     boolean valida(Posto value);
     

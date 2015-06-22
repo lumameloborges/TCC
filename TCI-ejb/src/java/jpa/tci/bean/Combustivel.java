@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package jpa.tci.bean;
 
 import java.io.Serializable;
@@ -11,8 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -21,7 +18,6 @@ import javax.persistence.Table;
  *
  * @author Luma Borges
  */
-
 @Entity
 @Table(name = "Combustivel")
 @NamedQuery(name = "Combustivel.findAll", query = "select o from Combustivel o order by o.cod")
@@ -32,11 +28,8 @@ public class Combustivel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "seqCombustivel")
     public int cod;
-    private String descricao, tipocombustivel;
-    @ManyToOne
-    @JoinColumn(name = "cod_valor", referencedColumnName = "cod")
-    private Valor valor;
-
+    private String descricao;
+    private String tipocombustivel;
 
     public Combustivel() {
     }
@@ -44,10 +37,9 @@ public class Combustivel implements Serializable {
     public Combustivel(int cod, String descricao, String tipocombustivel, Valor valor) {
         this.cod = cod;
         this.descricao = descricao;
-        this.tipocombustivel= tipocombustivel;
-        this.valor = valor;
+        this.tipocombustivel = tipocombustivel;
     }
-
+    
     public int getCod() {
         return cod;
     }
@@ -71,15 +63,6 @@ public class Combustivel implements Serializable {
     public void setTipoCombustivel(String tipocombustivel) {
         this.tipocombustivel = tipocombustivel;
     }
-
-    public Valor getValor() {
-        return valor;
-    }
-
-    public void setValor(Valor valor) {
-        this.valor = valor;
-    }
-
     @Override
     public int hashCode() {
         int hash = 5;

@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -34,7 +35,7 @@ public class Endereco implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "seqEndereco")
     private int cod;
     private String bairro, rua;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "cod_posto", referencedColumnName = "cod")
     private Posto posto;
 

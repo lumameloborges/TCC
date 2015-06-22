@@ -3,17 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package jpa.tci.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -21,12 +23,10 @@ import javax.persistence.Table;
  *
  * @author Luma Borges
  */
-
 @Entity
 @Table(name = "posto")
 @NamedQuery(name = "Posto.findAll", query = "select o from Posto o order by o.cod")
 @SequenceGenerator(name = "seqPosto", sequenceName = "SEQPOSTO", allocationSize = 1)
-
 
 public class Posto implements Serializable {
 
@@ -34,25 +34,22 @@ public class Posto implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "seqPosto")
     private int cod;
     private String nome;
-    @ManyToOne
-    @JoinColumn(name = "cod_valor", referencedColumnName = "cod")
-    private Valor valor;
-    @ManyToOne
-    @JoinColumn(name = "cod_combustivel", referencedColumnName = "cod")
-    private Combustivel combustivel;
-    @ManyToOne
-    @JoinColumn(name = "cod_endereco", referencedColumnName = "cod")
-    private Endereco endereco;
+    private String tipoCombustivel;
+    private double valor;
+    private String rua;
+    
+    @OneToMany
+     private List<Valor> valorList = new ArrayList<Valor>();
 
     public Posto() {
     }
 
-    public Posto(int cod, String nome, Combustivel combustivel, Valor valor, Endereco endereco) {
+    public Posto(int cod, String nome, String tipoCombustivel, double valor, String rua) {
         this.cod = cod;
         this.nome = nome;
-        this.combustivel = combustivel;
+        this.tipoCombustivel = tipoCombustivel;
         this.valor = valor;
-        this.endereco = endereco;
+        this.rua = rua;
     }
 
     public int getCod() {
@@ -70,30 +67,40 @@ public class Posto implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
-    public Combustivel getCombustivel() {
-    return combustivel;
+
+    public String getTipoCombustivel() {
+        return tipoCombustivel;
     }
 
-    public void setCombustivel(Combustivel combustivel) {
-        this.combustivel = combustivel;
+    public void setTipoCombustivel(String tipoCombustivel) {
+        this.tipoCombustivel = tipoCombustivel;
     }
 
-    public Valor getValor() {
+    public double getValor() {
         return valor;
     }
 
-    public void setValor(Valor valor) {
+    public void setValor(double valor) {
         this.valor = valor;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public String getRua() {
+        return rua;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setRua(String rua) {
+        this.rua = rua;
     }
+
+    public List<Valor> getValorList() {
+        return valorList;
+    }
+
+    public void setValorList(List<Valor> valorList) {
+        this.valorList = valorList;
+    }
+
+    
 
     @Override
     public int hashCode() {

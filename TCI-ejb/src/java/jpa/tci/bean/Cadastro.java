@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package jpa.tci.bean;
 
 import java.io.Serializable;
@@ -19,30 +18,26 @@ import javax.persistence.UniqueConstraint;
 
 /**
  *
- * @author Luma Borges
+ * @author User
  */
-
-    
 @Entity
 @Table(name = "usuario", uniqueConstraints = {
 @UniqueConstraint(columnNames = {"username"})})
 @NamedQuery(name = "Usuario.findAll", query = "select o from Usuario o order by o.cod")
 @SequenceGenerator(name = "seqUsuario", sequenceName = "SEQUSUARIO", allocationSize = 1)
-
-public class Usuario implements Serializable {
-
-    @Id
+public class Cadastro implements Serializable {
+     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "seqUauario")
-     int cod;
+    private int cod;
     @Column(nullable = false)
     private String nome, username, senha, email, endereco, bairro, cidade, uf;
     private String complemento;
     
 
-    public Usuario() {
+    public Cadastro() {
     }
 
-    public Usuario(int cod, String nome, String username, String senha, String email, String endereco, String bairro, String complemento, String cidade, String uf) {
+    public Cadastro(int cod, String nome, String username, String senha, String email, String endereco, String bairro, String complemento, String cidade, String uf) {
         this.cod = cod;
         this.nome = nome;
         this.username = username;
@@ -172,5 +167,5 @@ public class Usuario implements Serializable {
         hash = 31 * hash + this.cod;
         return hash;
     }
+    
 }
-

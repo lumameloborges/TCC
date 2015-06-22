@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package jpa.tci.bean;
 
 import java.io.Serializable;
@@ -15,7 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -25,7 +23,6 @@ import javax.persistence.TemporalType;
  *
  * @author Luma Borges
  */
-
 @Entity
 @Table(name = "valor")
 @NamedQuery(name = "Valor.findAll", query = "select o from Valor o order by o.cod")
@@ -40,56 +37,18 @@ public class Valor implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date data;
     @ManyToOne
-    @JoinColumn(name = "cod_usuario", referencedColumnName = "cod")
-    private Usuario usuario;
-    @ManyToOne
-    @JoinColumn(name = "cod_combustivel", referencedColumnName = "cod")
+    @JoinColumn(name = "tipocombustivel", referencedColumnName = "cod")
     private Combustivel combustivel;
-    @JoinColumn(name = "cod_posto", referencedColumnName = "cod")
-    @OneToOne
-    private Posto posto;
+
 
     public Valor() {
     }
 
-    public Valor(int cod, Double valorcombustivel, Date data, Usuario usuario, Combustivel combustivel, Posto posto) {
+    public Valor(int cod, Double valorcombustivel, Date data, Combustivel combustivel) {
         this.cod = cod;
-        this.valorcombustivel= valorcombustivel;
-        this.data = data;
-        this.usuario = usuario;
-        this.combustivel = combustivel;
-        this.posto = posto;
-    }
-
-    public int getCod() {
-        return cod;
-    }
-
-    public void setCod(int cod) {
-        this.cod = cod;
-    }
-
-        public Double getValorCombustivel() {
-        return valorcombustivel;
-    }
-
-    public void setValorCombustivel(Double valorcombustivel) {
         this.valorcombustivel = valorcombustivel;
-    }
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
         this.data = data;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+        this.combustivel = combustivel;
     }
 
     public Combustivel getCombustivel() {
@@ -100,12 +59,28 @@ public class Valor implements Serializable {
         this.combustivel = combustivel;
     }
 
-        public Posto getPosto() {
-        return posto;
+    public int getCod() {
+        return cod;
     }
 
-    public void setPosto(Posto posto) {
-        this.posto = posto;
+    public void setCod(int cod) {
+        this.cod = cod;
+    }
+
+    public Double getValorCombustivel() {
+        return valorcombustivel;
+    }
+
+    public void setValorCombustivel(Double valorcombustivel) {
+        this.valorcombustivel = valorcombustivel;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
     }
 
     @Override

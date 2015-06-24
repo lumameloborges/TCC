@@ -7,66 +7,67 @@ package jpa.tci.ws;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.UriInfo;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
 import jpa.ejb.tci.dao.CadastroDAORemote;
-import jpa.ejb.tci.dao.UsuarioDAORemote;
-import jpa.tci.bean.Cadastro;
+import jpa.tci.bean.CadastroTeste;
+import jpa.tci.bean.Cadastros;
 
 /**
+ * REST Web Service
  *
- * @author User
+ * @author sti
  */
 @Stateless
-@Path(value = "/servicoCadastro")
+@Path("cadastro")
 public class ServicoCadastro {
+    
+    @EJB
+    private CadastroDAORemote cadastroDAOR;
+    private Cadastros cadastroWS;
+    
+    @Context
+    private UriInfo context;
 
-    @EJB
-    private UsuarioDAORemote usuarioDAO;
-    @EJB
-    private CadastroDAORemote cadastroDAO;
-    
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public UserWS testeGetText() {
-//        UserWS user = new UserWS();
-//        user.setLogado(true);
-//        return user;
-//    }
-//
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Path("/{usuario}/{senha}")
-//    public UserWS testeGetXML(@PathParam("usuario") String usuario, @PathParam("senha") String senha) {
-////        UsuarioWs usuariows = new UsuarioWs();
-////        usuariows.setUsername("teste usuario" + usuario);
-////        usuariows.setSenha("teste senha" + senha);
-//        UserWS user = new UserWS();
-//        user.setLogado(usuarioDAO.valida(usuario, senha));
-//        return user;
-//
-//    }
-//
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Path("/teste/{usuario}")
-//    public UserWS testeGetXML(@PathParam("usuario") String usuario) {
-//        UserWS user = new UserWS();
-//        user.setLogado(usuarioDAO.valida(usuario, "101010"));
-//        return user;
-//    }
-    
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Cadastro createDepartamento(Cadastro cadastro) {
-        return cadastroDAO.create(cadastro);
-//        return "Departamento incluido";
+    /**
+     * Creates a new instance of CadastroWS
+     */
+    public ServicoCadastro() {
     }
 
-    
-    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{nome}/{email}/{login}/{senha}")
+    public CadastroTeste testeGetXML(@PathParam("nome") String nome, 
+                              @PathParam("email") String email, 
+                              @PathParam("login") String login, 
+                              @PathParam("senha") String senha) {
+//        UsuarioWs usuariows = new UsuarioWs();
+//        usuariows.setUsername("teste usuario" + usuario);
+//        usuariows.setSenha("teste senha" + senha);
+            CadastroTeste ct = new CadastroTeste();
+        try{
+            Cadastros cadastrosInsert = new Cadastros();
+            cadastrosInsert.setNome(nome);
+            cadastrosInsert.setEmail(email);
+            cadastrosInsert.setUsuario(login);
+            cadastrosInsert.setSenha(senha);
+
+            cadastroDAOR.create(cadastrosInsert);
+            
+            ct.setCadastro(true);
+            return ct;
+        }
+        catch(Exception ex){
+            ct.setCadastro(false); 
+            return ct;
+        }
+    }
 }

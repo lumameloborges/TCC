@@ -45,17 +45,22 @@ public class ServicoPosto {
         return post;
         
     }
+    
+    //http://localhost:8080/TCI-war/meuservico/servicoposto/Posto/listatodos
      @GET
     @Produces("application/json")
     @Path("Posto/listatodos")   
     public List<PostWS> getListaTodos(){
 
-        List<Posto> listaTodos = postoDAO.listaTodos();
+        List<Posto> listaTodos = postoDAO.listateste();
         List<PostWS> lista=new ArrayList<>();
         for (Posto posto:listaTodos){
             PostWS post=new PostWS();
             post.setId(posto.getCod());
             post.setNome(posto.getNome());
+            post.setRua(posto.getRua());
+            post.setTipoCombustivel(posto.getTipoCombustivel());
+            post.setValor(posto.getValor());
             lista.add(post);
         }
         return lista;

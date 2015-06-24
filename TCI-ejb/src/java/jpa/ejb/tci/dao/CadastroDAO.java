@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package jpa.ejb.tci.dao;
 
 import java.util.List;
@@ -12,33 +13,23 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import jpa.tci.bean.Cadastro;
+import jpa.tci.bean.Cadastros;
 import jpa.tci.bean.Usuario;
 
 /**
  *
- * @author User
+ * @author Luma
  */
 @Stateless
 @LocalBean
-public class CadastroDAO implements CadastroDAORemote{
+public class CadastroDAO implements CadastroDAORemote {
+    
     @PersistenceContext
     private EntityManager em;
 
-
     @Override
-    public boolean valida(String username, String passwords) {
-        Cadastro cadastro = this.achaLogin(username);
-        if (cadastro!=null){
-            return cadastro.validasenha(passwords);
-        }else{
-            return false;
-        }
-    }
-
-    @Override
-    public Cadastro create(Cadastro value) {
-           if (this.valida(value)) {
+    public Cadastros create(Cadastros value) {
+        if (this.valida(value)) {
             em.persist(value);
             return value;
         } else {
@@ -47,46 +38,56 @@ public class CadastroDAO implements CadastroDAORemote{
     }
 
     @Override
-    public Cadastro retrive(Cadastro value) {
-         Cadastro valueRet = em.find(Cadastro.class, value.getCod());
+    public Cadastros retrive(Cadastros value) {
+        Cadastros valueRet = em.find(Cadastros.class, value.getId());
         return valueRet;
     }
 
     @Override
-    public void update(Cadastro value) {
-         if (this.valida(value)) {
+    public void update(Cadastros value) {
+        if (this.valida(value)) {
             em.merge(value);
         }
     }
 
     @Override
-    public void delete(Cadastro value) {
-        value = this.retrive(value);
+    public void delete(Cadastros value) {
+         value = this.retrive(value);
         em.remove(value);
     }
 
     @Override
-    public List<Cadastro> listaTodos() {
-        return (List<Cadastro>) em.createNamedQuery("Cadastro.findAll").getResultList();
+    public List<Cadastros> listaTodos() {
+        return (List<Cadastros>) em.createNamedQuery("Cadastros.findAll").getResultList();
     }
 
     @Override
-    public boolean valida(Cadastro value) {
-        boolean ret = false;
+    public boolean valida(Cadastros value) {
+         boolean ret = false;
         if (value != null) {
             ret = true;
         }
         return ret;
     }
-
+    
     @Override
-    public Cadastro achaLogin(String username) {
-        Query query = em.createQuery("select o from Cadastro o where o.username = :username");
+    public Cadastros achaLogin(String usuario) {
+        Query query = em.createQuery("select o from Cadastros o where o.usuario = :usuario");
         try {
-            Cadastro value = (Cadastro) query.setParameter("username", username).getSingleResult();
+            Cadastros value = (Cadastros) query.setParameter("usuario", usuario).getSingleResult();
             return value;
         } catch (NoResultException nre) {
             return null;
+        }
+    }
+
+    @Override
+    public boolean valida(String usuario, String senha) {
+        Cadastros cadastros = this.achaLogin(usuario);
+        if (cadastros!=null){
+            return cadastros.validasenha(senha);
+        }else{
+            return false;
         }
     }
 }

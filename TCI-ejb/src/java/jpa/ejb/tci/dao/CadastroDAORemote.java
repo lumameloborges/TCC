@@ -6,27 +6,29 @@
 package jpa.ejb.tci.dao;
 
 import java.util.List;
-import jpa.tci.bean.Cadastro;
+import javax.ejb.Remote;
+import jpa.tci.bean.Cadastros;
 
 /**
  *
- * @author User
+ * @author Luma
  */
+@Remote
 public interface CadastroDAORemote {
-    Cadastro create(Cadastro value);
+    
+    Cadastros create(Cadastros value);
 
-    Cadastro retrive(Cadastro value);
+    Cadastros retrive(Cadastros value);
 
-    void update(Cadastro value);
+    void update(Cadastros value);
 
-    void delete(Cadastro value);
+    void delete(Cadastros value);
 
-    List<Cadastro> listaTodos();
+    List<Cadastros> listaTodos();
 
-    boolean valida(Cadastro value);
-
+    boolean valida(Cadastros vlaue);
+    
     boolean valida(String username, String passwords);
 
-    Cadastro achaLogin(String username);
-
+    Cadastros achaLogin(String username);
 }

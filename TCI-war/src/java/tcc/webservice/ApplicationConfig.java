@@ -8,6 +8,7 @@ package tcc.webservice;
 import java.util.Set;
 import javax.ws.rs.core.Application;
 import jpa.tci.ws.Servico;
+import jpa.tci.ws.ServicoCadastro;
 import jpa.tci.ws.ServicoCombustivel;
 import jpa.tci.ws.ServicoEndereco;
 import jpa.tci.ws.ServicoPosto;
@@ -28,6 +29,7 @@ public class ApplicationConfig extends Application {
         resources.add(ServicoValor.class);
         resources.add(ServicoCombustivel.class);
         resources.add(ServicoEndereco.class);
+        resources.add(ServicoCadastro.class);
         return resources;
     }
     

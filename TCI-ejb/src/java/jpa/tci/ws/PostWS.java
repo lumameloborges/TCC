@@ -12,6 +12,9 @@ package jpa.tci.ws;
 public class PostWS {
     private int id;
     private String nome;
+    private String rua;
+    private double valor;
+    private String tipoCombustivel;
 
     public int getId() {
         return id;
@@ -28,4 +31,30 @@ public class PostWS {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public String getRua() {
+        return rua;
+    }
+
+    public void setRua(String rua) {
+        this.rua = rua;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
+    public String getTipoCombustivel() {
+        return tipoCombustivel;
+    }
+
+    public void setTipoCombustivel(String tipoCombustivel) {
+        this.tipoCombustivel = tipoCombustivel;
+    }
+    
+    
 }

@@ -12,7 +12,7 @@ import jpa.tci.bean.Cadastro;
  *
  * @author User
  */
-interface CadastroDAORemote {
+public interface CadastroDAORemote {
     Cadastro create(Cadastro value);
 
     Cadastro retrive(Cadastro value);
